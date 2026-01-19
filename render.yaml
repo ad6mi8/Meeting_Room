@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: secure-meeting-room-backend
+    env: docker
+    plan: free
+    autoDeploy: true
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: CLIENT_URL
+        value: https://YOUR_GITHUB_USERNAME.github.io/Meeting_Room
+      - key: PORT
+        value: 5000
+

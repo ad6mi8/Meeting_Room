@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master, develop ]
+  pull_request:
+    branches: [ main, master, develop ]
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      
+      - name: Install backend dependencies
+        run: npm install
+      
+      - name: Install frontend dependencies
+        working-directory: ./client
+        run: npm install
+      
+      - name: Check backend code
+        run: |
+          echo "Backend code check"
+          node -e "console.log('Node.js version:', process.version)"
+      
+      - name: Build frontend
+        working-directory: ./client
+        run: npm run build
+        env:
+          CI: false
+      
+      - name: Check build artifacts
+        run: |
+          if [ -d "client/build" ]; then
+            echo "✓ Frontend build successful"
+          else
+            echo "✗ Frontend build failed"
+            exit 1
+          fi

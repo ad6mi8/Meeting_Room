@@ -1,0 +1,30 @@
+{
+    "name": "secure-meeting-room",
+    "version": "1.0.0",
+    "description": "Privacy-first secure online meeting application",
+    "main": "server/index.js",
+    "scripts": {
+        "dev": "concurrently \"npm run server\" \"npm run client\"",
+        "server": "nodemon server/index.js",
+        "client": "cd client && npm start",
+        "build": "cd client && npm run build",
+        "start": "node server/index.js",
+        "setup-github": "bash setup-github.sh",
+        "publish:github:ps": "powershell -ExecutionPolicy Bypass -File .\\scripts\\publish-github.ps1 -RepoName Meeting_Room -Visibility private",
+        "publish:github:bash": "bash ./scripts/publish-github.sh Meeting_Room private main \"Initial commit\""
+    },
+    "keywords": ["meeting", "privacy", "webrtc", "secure"],
+    "author": "",
+    "license": "MIT",
+    "dependencies": {
+        "express": "^4.18.2",
+        "socket.io": "^4.6.1",
+        "cors": "^2.8.5",
+        "crypto": "^1.0.1",
+        "nodemailer": "^6.9.7"
+    },
+    "devDependencies": {
+        "nodemon": "^3.0.1",
+        "concurrently": "^8.2.2"
+    }
+}

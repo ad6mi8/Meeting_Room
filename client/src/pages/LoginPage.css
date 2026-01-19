@@ -1,0 +1,87 @@
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xl);
+  background: linear-gradient(135deg, var(--color-white) 0%, var(--color-gray-50) 100%);
+}
+
+.login-container {
+  width: 100%;
+  max-width: 440px;
+  animation: fadeIn 0.6s ease-out;
+}
+
+.login-card {
+  padding: var(--spacing-2xl);
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.login-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-black);
+  letter-spacing: -0.02em;
+}
+
+.login-subtitle {
+  font-size: 16px;
+  color: var(--color-gray-600);
+  line-height: 1.6;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.otp-info {
+  text-align: center;
+  padding: var(--spacing-lg);
+  background-color: var(--color-gray-50);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.otp-info p {
+  font-size: 14px;
+  color: var(--color-gray-600);
+  margin-bottom: var(--spacing-xs);
+}
+
+.otp-email {
+  font-weight: 600;
+  color: var(--color-black) !important;
+  font-size: 16px !important;
+}
+
+.login-actions {
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: center;
+}
+
+.login-button {
+  flex: 1;
+}
+
+@media (max-width: 480px) {
+  .login-card {
+    padding: var(--spacing-lg);
+  }
+  
+  .login-actions {
+    flex-direction: column;
+  }
+  
+  .login-button {
+    width: 100%;
+  }
+}
